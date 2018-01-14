@@ -3,5 +3,7 @@ LICENSE.md
 README.md
 src/o3s/plugins/ms3di/importer.cpp
 src/o3s/plugins/ms3di/importer.h
+src/o3s/plugins/ms3di/parser.cpp
+src/o3s/plugins/ms3di/parser.h
 src/o3s/plugins/ms3di/plugin.cpp
 src/o3s/plugins/ms3di/plugin.h
