@@ -51,10 +51,9 @@ o3d::studio::common::ImportDefinition *Importer::introspect(const o3d::String &f
     }
 }
 
-o3d::studio::common::ImportDefinition *Importer::import(
-        const o3d::String &filename,
+o3d::studio::common::ImportDefinition *Importer::import(const o3d::String &filename,
         o3d::studio::common::ImporterOption *options,
-        o3d::studio::common::Entity *parent)
+        common::Hub *parent)
 {
     InStream *inStream = o3d::FileManager::instance()->openInStream(filename);
     Ms3dImportDefinition *def = new Ms3dImportDefinition();
@@ -94,6 +93,11 @@ o3d::DateTime Ms3dImportDefinition::creationDateTime() const
 o3d::Float Ms3dImportDefinition::unit() const
 {
     return m_unit;
+}
+
+o3d::Color Ms3dImportDefinition::ambientColor() const
+{
+    return m_ambient;
 }
 
 o3d::UInt32 Ms3dImportDefinition::numModel() const

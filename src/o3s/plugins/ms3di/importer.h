@@ -31,6 +31,7 @@ public:
     virtual String creator() const override;
     virtual DateTime creationDateTime() const override;
     virtual Float unit() const override;
+    virtual Color ambientColor() const override;
 
     virtual UInt32 numModel() const override;
     virtual UInt32 numGeometry() const override;
@@ -43,6 +44,8 @@ private:
     String m_creator;
     DateTime m_ceationTimestamp;
     Float m_unit;
+
+    Color m_ambient;
 
     UInt32 m_numModel;
     UInt32 m_numGeometry;
@@ -63,7 +66,7 @@ public:
     virtual common::ImportDefinition* import(
             const String &filename,
             common::ImporterOption *options,
-            common::Entity *parent) override;
+            common::Hub *parent) override;
 };
 
 } // namespace fbxi
