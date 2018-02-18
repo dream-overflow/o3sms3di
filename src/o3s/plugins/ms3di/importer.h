@@ -26,7 +26,11 @@ class O3S_PLUGIN_API Ms3dImportDefinition : public common::ImportDefinition
 {
 public:
 
+    Ms3dImportDefinition(const String &basePath);
+
     virtual ~Ms3dImportDefinition();
+
+    virtual String basePath() const override;
 
     virtual String creator() const override;
     virtual DateTime creationDateTime() const override;
@@ -40,6 +44,8 @@ public:
     virtual UInt32 numLight() const override;
 
 private:
+
+    String m_basePath;
 
     String m_creator;
     DateTime m_ceationTimestamp;

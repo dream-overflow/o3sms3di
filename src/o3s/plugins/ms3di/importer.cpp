@@ -32,7 +32,7 @@ o3d::studio::common::ImporterOption *Importer::buildOptions()
 o3d::studio::common::ImportDefinition *Importer::introspect(const o3d::String &filename)
 {
     InStream *inStream = o3d::FileManager::instance()->openInStream(filename);
-    Ms3dImportDefinition *def = new Ms3dImportDefinition();
+    Ms3dImportDefinition *def = new Ms3dImportDefinition(File(filename).getFilePath());
 
     Parser *parser = new Parser(inStream);
     Bool result = parser->parse();
@@ -56,7 +56,7 @@ o3d::studio::common::ImportDefinition *Importer::import(const o3d::String &filen
         common::Hub *parent)
 {
     InStream *inStream = o3d::FileManager::instance()->openInStream(filename);
-    Ms3dImportDefinition *def = new Ms3dImportDefinition();
+    Ms3dImportDefinition *def = new Ms3dImportDefinition(File(filename).getFilePath());
 
     Parser *parser = new Parser(inStream);
     Bool result = parser->parse();
@@ -75,9 +75,20 @@ o3d::studio::common::ImportDefinition *Importer::import(const o3d::String &filen
     }
 }
 
+Ms3dImportDefinition::Ms3dImportDefinition(const o3d::String &basePath) :
+    m_basePath(basePath)
+{
+
+}
+
 Ms3dImportDefinition::~Ms3dImportDefinition()
 {
 
+}
+
+o3d::String Ms3dImportDefinition::basePath() const
+{
+    return m_basePath;
 }
 
 o3d::String Ms3dImportDefinition::creator() const
