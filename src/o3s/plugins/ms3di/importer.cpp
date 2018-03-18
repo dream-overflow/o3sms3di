@@ -17,6 +17,7 @@ Importer::Importer() :
     common::Importer()
 {
     m_name = "o3s::plugin::importer::ms3di";
+    m_exts = "MilkShape3D (*.ms3d)";
 }
 
 Importer::~Importer()
@@ -24,12 +25,12 @@ Importer::~Importer()
 
 }
 
-o3d::studio::common::ImporterOption *Importer::buildOptions()
+o3d::studio::common::ImporterOption *Importer::buildOptions() const
 {
     return nullptr;
 }
 
-o3d::studio::common::ImportDefinition *Importer::introspect(const o3d::String &filename)
+o3d::studio::common::ImportDefinition *Importer::introspect(const o3d::String &filename) const
 {
     InStream *inStream = o3d::FileManager::instance()->openInStream(filename);
     Ms3dImportDefinition *def = new Ms3dImportDefinition(File(filename).getFilePath());
@@ -53,7 +54,7 @@ o3d::studio::common::ImportDefinition *Importer::introspect(const o3d::String &f
 
 o3d::studio::common::ImportDefinition *Importer::import(const o3d::String &filename,
         o3d::studio::common::ImporterOption *options,
-        common::Hub *parent)
+        common::Hub *parent) const
 {
     InStream *inStream = o3d::FileManager::instance()->openInStream(filename);
     Ms3dImportDefinition *def = new Ms3dImportDefinition(File(filename).getFilePath());
